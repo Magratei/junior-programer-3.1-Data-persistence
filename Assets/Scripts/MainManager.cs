@@ -6,10 +6,13 @@ using UnityEngine.UI;
 
 public class MainManager : MonoBehaviour
 {
+    public UiManager uiManager;
+
     public Brick BrickPrefab;
     public int LineCount = 6;
     public Rigidbody Ball;
 
+    public Text bestText;
     public Text ScoreText;
     public GameObject GameOverText;
     
@@ -22,6 +25,8 @@ public class MainManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        uiManager = GameObject.Find("Ui Manager").GetComponent<UiManager>();
+
         const float step = 0.6f;
         int perLine = Mathf.FloorToInt(4.0f / step);
         
@@ -36,6 +41,9 @@ public class MainManager : MonoBehaviour
                 brick.onDestroyed.AddListener(AddPoint);
             }
         }
+
+        bestText.text = $"Best Score: {uiManager.nameBest} : {uiManager.pointBest}"; 
+
     }
 
     private void Update()
@@ -57,6 +65,11 @@ public class MainManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                if (m_Points > uiManager.pointBest)
+                {
+                    uiManager.pointBest = m_Points;
+                    uiManager.nameBest = uiManager.nameGamer;
+                }
                 SceneManager.LoadScene(0);
             }
         }

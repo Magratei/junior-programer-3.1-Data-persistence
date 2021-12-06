@@ -8,6 +8,8 @@ public class UiManager : MonoBehaviour
 {
     private static UiManager uiManager;
     public string nameGamer;
+    public string nameBest = "NoName";
+    public int pointBest = 0;
     
 
     private void Awake()
@@ -24,7 +26,7 @@ public class UiManager : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(nameGamer);
+       // Debug.Log(nameGamer);
     }
 
 

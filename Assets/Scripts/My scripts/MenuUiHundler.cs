@@ -10,18 +10,18 @@ using UnityEditor;
 public class MenuUiHundler : MonoBehaviour
 {
     public InputField input;
-    public bool startGame = false;
+    public Text bestText;
     private UiManager uiManager;
 
     private void Start()
     {
         uiManager = GameObject.Find("Ui Manager").GetComponent<UiManager>();
-        
+        bestText.text = $"Best Score: {uiManager.nameBest} : {uiManager.pointBest}";
     }
 
     public void StartNew()
     {
-        startGame = true;
+        
         if (input.text != "") uiManager.nameGamer = input.text;
         else uiManager.nameGamer = "NoName";
         SceneManager.LoadScene(1); 
