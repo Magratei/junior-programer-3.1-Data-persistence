@@ -70,6 +70,9 @@ public class MainManager : MonoBehaviour
                     uiManager.pointBest = m_Points;
                     uiManager.nameBest = uiManager.nameGamer;
                 }
+                uiManager.pointLast = m_Points;
+                uiManager.nameLast = uiManager.nameGamer;
+                uiManager.LeadersGame();
                 SceneManager.LoadScene(0);
             }
         }
