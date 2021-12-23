@@ -74,6 +74,7 @@ public class MainManager : MonoBehaviour
                 uiManager.nameLast = uiManager.nameGamer;
                 uiManager.LeadersGame();
                 SceneManager.LoadScene(0);
+
             }
         }
     }

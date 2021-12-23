@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 
 
@@ -27,6 +28,7 @@ public class UiManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+        LoadData();
     }
     //расставляет по местам лидеров игры в зависимости от их очков
     public void LeadersGame()
@@ -58,22 +60,40 @@ public class UiManager : MonoBehaviour
                 }
             }
         }
+        SaveProcess();
     }
 
 
     [System.Serializable]
     class SaveData
     {
-
+        public int[] pointLeader = new int[5];
+        public string[] nameLeader = new string[5];
     }
 
     public void SaveProcess()
     {
         SaveData data = new SaveData();
-        
+        data.pointLeader = pointLeader;
+        data.nameLeader = nameLeader;
 
+        string json = JsonUtility.ToJson(data);
 
+        File.WriteAllText(Application.persistentDataPath + "/savefile.json", json);
+    }
 
+    public void LoadData()
+    {
+        string path = Application.persistentDataPath + "/savefile.json";
+        if (File.Exists(path))
+        {
+            string json = File.ReadAllText(path);
+            SaveData data = JsonUtility.FromJson<SaveData>(json);
+
+            pointLeader = data.pointLeader;
+            nameLeader = data.nameLeader;
+
+        }
     }
 
 

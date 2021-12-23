@@ -18,7 +18,7 @@ public class MenuUiHundler : MonoBehaviour
     {
         //uiManager = GameObject.Find("Ui Manager").GetComponent<UiManager>();
 
-        bestText.text = $"Best Score: {UiManager.Instance.nameBest} : {UiManager.Instance.pointBest}";
+        bestText.text = $"Best Score: {UiManager.Instance.nameLeader[0]} : {UiManager.Instance.pointLeader[0]}";
         
         
     }
