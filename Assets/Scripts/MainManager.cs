@@ -42,7 +42,7 @@ public class MainManager : MonoBehaviour
             }
         }
 
-        bestText.text = $"Best Score: {uiManager.nameBest} : {uiManager.pointBest}"; 
+        bestText.text = $"Best Score: {UiManager.Instance.nameBest} : {UiManager.Instance.pointBest}"; 
 
     }
 
@@ -65,10 +65,10 @@ public class MainManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                if (m_Points > uiManager.pointBest)
+                if (m_Points > UiManager.Instance.pointBest)
                 {
-                    uiManager.pointBest = m_Points;
-                    uiManager.nameBest = uiManager.nameGamer;
+                    UiManager.Instance.pointBest = m_Points;
+                    UiManager.Instance.nameBest = uiManager.nameGamer;
                 }
                 uiManager.pointLast = m_Points;
                 uiManager.nameLast = uiManager.nameGamer;

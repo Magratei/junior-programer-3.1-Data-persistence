@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class UiManager : MonoBehaviour
 {
-    private static UiManager uiManager;
+    public static UiManager Instance;
     public string nameGamer;
     public string nameLast;
     public int pointLast = 0;
@@ -19,16 +19,16 @@ public class UiManager : MonoBehaviour
 
     private void Awake()
     {
-        if (uiManager != null)
+        if (Instance != null)
         {
             Destroy(gameObject);
             return;
         }
 
-        uiManager = this;
+        Instance = this;
         DontDestroyOnLoad(gameObject);
     }
-
+    //расставляет по местам лидеров игры в зависимости от их очков
     public void LeadersGame()
     {
         if (pointBest > pointLeader[0])
@@ -39,8 +39,8 @@ public class UiManager : MonoBehaviour
                 Debug.Log($"pointLeader[{i}] - {pointLeader[i]}");
                 nameLeader[i] = nameLeader[i - 1];
             }
-            pointLeader[0] = uiManager.pointBest;
-            nameLeader[0] = uiManager.nameBest;
+            pointLeader[0] = pointBest;
+            nameLeader[0] = nameBest;
         }else
         {
             for (int i = 0; i < 5; i++)
@@ -60,10 +60,22 @@ public class UiManager : MonoBehaviour
         }
     }
 
-    private void Update()
+
+    [System.Serializable]
+    class SaveData
     {
-       // Debug.Log(nameGamer);
+
     }
+
+    public void SaveProcess()
+    {
+        SaveData data = new SaveData();
+        
+
+
+
+    }
+
 
 
 }

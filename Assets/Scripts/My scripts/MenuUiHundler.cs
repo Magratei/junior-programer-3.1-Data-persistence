@@ -11,14 +11,14 @@ public class MenuUiHundler : MonoBehaviour
 {
     public InputField input;
     public Text bestText;
-    private UiManager uiManager;
+    //private UiManager uiManager;
 
 
     private void Start()
     {
-        uiManager = GameObject.Find("Ui Manager").GetComponent<UiManager>();
+        //uiManager = GameObject.Find("Ui Manager").GetComponent<UiManager>();
 
-        bestText.text = $"Best Score: {uiManager.nameBest} : {uiManager.pointBest}";
+        bestText.text = $"Best Score: {UiManager.Instance.nameBest} : {UiManager.Instance.pointBest}";
         
         
     }
@@ -26,8 +26,8 @@ public class MenuUiHundler : MonoBehaviour
     public void StartNew()
     {
         
-        if (input.text != "") uiManager.nameGamer = input.text;
-        else uiManager.nameGamer = "NoName";
+        if (input.text != "") UiManager.Instance.nameGamer = input.text;
+        else UiManager.Instance.nameGamer = "NoName";
         SceneManager.LoadScene(1); 
     }
 
